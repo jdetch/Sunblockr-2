@@ -2,76 +2,42 @@
   <div class="small-12 small-centered columns">
     <h2>Are you ready to block the sun?</h2>
     <h3>Follow the three simple steps below to calculate your recommended sun exposure!</h3>
-    <% if @error %>
-      <div id="error_explanation">
-        <%= @error %>
-      </div>
-    <% end %>
-  </div>
-</div>
-    <div class="row">
-      <div class="step-1 small-6 columns">
-          <h2 class="step">Step One</h2>
-          <h4>Please enter your zip code:</h4>
-          <div class="row">
-            <div class="small-5 columns end">
-              <%= text_field_tag(:zipcode, nil, placeholder: 'Enter your zip code') %>
-            </div>
-          </div>
-          <%= submit_tag( "Calculate UV Index For Your Location", class: "button" ) %>
-        <% end %>
-        <h4>Current UV Index: <%= params[:uv_index] %></h4>
-      </div>
-      <div class="step-2 small-6 columns">
-      <%= form_tag( { :action => 'calculate_exposure_time' }) do %>
-        <%= hidden_field_tag(:uv_index, nil, :value => params[:uv_index]) %>
-        <h2 class="step">Step Two</h2>
-        <h4>Based on the following descriptions, please select your skin type using the dropdown list below:</h4>
-        <br/>
-        <p class="descriptions">I – Light - Always burns, never tans; blonde or red hair; blue eyes</p>
-        <p class="descriptions">II – Fair - Usually burns, tans minimally; light skin and hair</p>
-        <p class="descriptions">III – Medium - Sometimes burns, tans; medium skin color</p>
-        <p class="descriptions">IV – Olive - Rarely burns, tans well; darker skin; brown eyes</p>
-        <p class="descriptions">V – Brown - Very rarely burns, deeply tans; brown skin</p>
-        <p class="descriptions">VI – Black - Never burns; deeply pigmented dark brown to black skin</p>
-        <div class="row">
-          <div class="small-3 columns end">
-            <%= select_tag(:max_unprotected_exposure_time, options_for_select(SkinType.all.map { |st| [st.skin_type_number, st.id, st.max_unprotected_exposure_time] })) %>
-          </div>
-        </div>
-      </div>
-    </div>
-</div>
-<div class="row">
-  <div class="step-3 small-6 columns">
-      <h2 class="step">Step Three</h2>
-      <h4>If applicable, please enter the SPF (Sun Protection Factor) of your sunscreen</h4>
-      <div class="row">
-        <div class="small-4 columns end">
-          <%= text_field_tag(:spf, nil, placeholder: 'Enter your SPF') %>
-        </div>
-      </div>
-      <%= submit_tag( "Calculate Exposure Time", class: "button" ) %>
-    <% end %>
-  </div>
-  <div class="step-4 small-6 columns">
-    <h2 class="step">Recommended Exposure Time</h2>
-    <% if params[:exposure_time] %>
-        <h4>Recommended exposure time before getting burned (in minutes): <%= params[:exposure_time] %></h4>
-        <%= form_tag( { :action => 'calculate_exposure_time_in_hours' }) do %>
-            <%= hidden_field_tag(:exposure_time, nil, :value => params[:exposure_time]) %>
-            <%= submit_tag( "View Exposure Time in Hours", class: "button" ) %>
-        <% end %>
-    <% end %>
-    <% if params[:exposure_time_in_hours] %>
-        <h4>Recommended exposure time before getting burned (in hours): <%= params[:exposure_time_in_hours] %></h4>
-    <% end %>
-  </div>
-</div>
-<div class="row">
-  <div class="footer small-12 columns">
   </div>
 </div>
 
+<div class="row">
+  <div class="step-1 small-6 columns">
+    <h2 class="step">Step One</h2>
+      <h4>Please enter your zip code:</h4>
+      {{input type="text" placeholder="Enter your zip code"}}         
+      <a {{ action 'PLACEHOLDER'}} class="button">Calculate UV Index For Your Location</a>
+      <h4>Current UV Index: PLACEHOLDER </h4>
+  </div>  
+  <div class="step-2 small-6 columns">  
+    <h2 class="step">Step Two</h2>
+    <h4>Based on the following descriptions, please select your skin type using the dropdown list below:</h4>
+    <br/>
+    <p class="descriptions">I – Light - Always burns, never tans; blonde or red hair; blue eyes</p>
+    <p class="descriptions">II – Fair - Usually burns, tans minimally; light skin and hair</p>
+    <p class="descriptions">III – Medium - Sometimes burns, tans; medium skin color</p>
+    <p class="descriptions">IV – Olive - Rarely burns, tans well; darker skin; brown eyes</p>
+    <p class="descriptions">V – Brown - Very rarely burns, deeply tans; brown skin</p>
+    <p class="descriptions">VI – Black - Never burns; deeply pigmented dark brown to black skin</p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="step-3 small-6 columns">
+    <h2 class="step">Step Three</h2>
+    <h4>If applicable, please enter the SPF (Sun Protection Factor) of your sunscreen</h4>
+    {{input type="text" placeholder="Enter your SPF"}}
+    <a {{ action 'PLACEHOLDER'}} class="button">Calculate Exposure Time</a>
+  </div>
+  <div class="step-4 small-6 columns">
+    <h2 class="step">Recommended Exposure Time</h2>
+      <h4>Recommended exposure time before getting burned (in minutes): PLACEHOLDER </h4>
+      <h4>Recommended exposure time before getting burned (in hours): PLACEHOLDER </h4>
+  </div>
+</div>
 
 {{outlet}}
