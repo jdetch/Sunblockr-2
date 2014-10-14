@@ -15,14 +15,14 @@
   </div>  
   <div class="step-2 small-6 columns">  
     <h2 class="step">Step Two</h2>
-    <h4>Based on the following descriptions, please select your skin type using the dropdown list below:</h4>
-    <br/>
-    <p class="descriptions">I – Light - Always burns, never tans; blonde or red hair; blue eyes</p>
-    <p class="descriptions">II – Fair - Usually burns, tans minimally; light skin and hair</p>
-    <p class="descriptions">III – Medium - Sometimes burns, tans; medium skin color</p>
-    <p class="descriptions">IV – Olive - Rarely burns, tans well; darker skin; brown eyes</p>
-    <p class="descriptions">V – Brown - Very rarely burns, deeply tans; brown skin</p>
-    <p class="descriptions">VI – Black - Never burns; deeply pigmented dark brown to black skin</p>
+      <label>
+        <h4>Based on the following descriptions, please select your skin type using the dropdown list below:</h4>
+        {{view Ember.Select 
+            content=skinTypes 
+            optionValuePath="content.max_unprotected_exposure_time" 
+            optionLabelPath="content.type"
+            prompt="Please select your skin type"}}
+      </label>
   </div>
 </div>
 
