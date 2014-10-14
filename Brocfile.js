@@ -7,6 +7,7 @@ var app = new EmberApp({
     'modernizr': true, //includes modernizer
     'fastclick': true, //includes fastclick
     'foundationJs': 'all' //Includes the full foundation.js with all modules
+    }
   });
 
 // Use `app.import` to add additional libraries to the generated
